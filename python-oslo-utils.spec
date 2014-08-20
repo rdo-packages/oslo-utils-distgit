@@ -2,7 +2,7 @@
 %global pypi_name oslo.utils
 
 Name:           python-oslo-utils
-Version:        0.1.1
+Version:        0.2.0
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
@@ -71,5 +71,8 @@ rm -rf html/.{doctrees,buildinfo}
 %doc html LICENSE
 
 %changelog
-* Thu Jul 31 2014 Alan <apevec@gmail.com> - 0.1.1-1
+* Wed Aug 20 2014 Alan Pevec <apevec@redhat.com> - 0.2.0-1
+- update to 0.2.0
+
+* Thu Jul 31 2014 Alan Pevec <apevec@redhat.com> - 0.1.1-1
 - Initial package.
