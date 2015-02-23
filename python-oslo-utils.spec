@@ -2,7 +2,7 @@
 %global pypi_name oslo.utils
 
 Name:           python-oslo-utils
-Version:        1.0.0
+Version:        1.3.0
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
@@ -32,7 +32,7 @@ Summary:    Documentation for the Oslo database handling library
 Group:      Documentation
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-oslo-sphinx >= 2.3.0
 
 %description doc
 Documentation for the Oslo database handling library.
@@ -40,12 +40,9 @@ Documentation for the Oslo database handling library.
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
-# Remove bundled egg-info
-rm -rf %{pypi_name}.egg-info
+
 # Let RPM handle the dependencies
 rm -f requirements.txt
-# make doc build compatible with python-oslo-sphinx RPM
-sed -i 's/oslosphinx/oslo.sphinx/' doc/source/conf.py
 
 
 %build
@@ -63,6 +60,7 @@ rm -rf html/.{doctrees,buildinfo}
 
 %files
 %doc README.rst LICENSE
+%{python2_sitelib}/oslo_utils
 %{python2_sitelib}/oslo
 %{python2_sitelib}/*.egg-info
 %{python2_sitelib}/*-nspkg.pth
@@ -71,6 +69,9 @@ rm -rf html/.{doctrees,buildinfo}
 %doc html LICENSE
 
 %changelog
+* Tue Feb 24 2015 Alan Pevec <alan.pevec@redhat.com> 1.3.0-1
+- Update to upstream 1.3.0
+
 * Sun Sep 21 2014 Alan Pevec <alan.pevec@redhat.com> 1.0.0-1
 - Update to upstream 1.0.0
 
