@@ -2,7 +2,7 @@
 %global pypi_name oslo.utils
 
 Name:           python-oslo-utils
-Version:        1.3.0
+Version:        1.4.0
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
@@ -19,6 +19,8 @@ Requires:       python-oslo-i18n
 Requires:       python-babel
 Requires:       python-iso8601
 Requires:       python-six
+Requires:       python-netaddr >= 0.7.12
+Requires:       python-netifaces >= 0.10.4
 
 %description
 The OpenStack Oslo Utility library.
@@ -28,14 +30,16 @@ The OpenStack Oslo Utility library.
 
 
 %package doc
-Summary:    Documentation for the Oslo database handling library
+Summary:    Documentation for the Oslo Utility library
 Group:      Documentation
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx >= 2.3.0
+# for API autodoc
+BuildRequires:  python-netifaces
 
 %description doc
-Documentation for the Oslo database handling library.
+Documentation for the Oslo Utility library.
 
 
 %prep
@@ -60,8 +64,8 @@ rm -rf html/.{doctrees,buildinfo}
 
 %files
 %doc README.rst LICENSE
-%{python2_sitelib}/oslo_utils
 %{python2_sitelib}/oslo
+%{python2_sitelib}/oslo_utils
 %{python2_sitelib}/*.egg-info
 %{python2_sitelib}/*-nspkg.pth
 
@@ -69,6 +73,9 @@ rm -rf html/.{doctrees,buildinfo}
 %doc html LICENSE
 
 %changelog
+* Tue Mar 31 2015 Alan Pevec <alan.pevec@redhat.com> 1.4.0-1
+- Update to 1.4.0
+
 * Tue Feb 24 2015 Alan Pevec <alan.pevec@redhat.com> 1.3.0-1
 - Update to upstream 1.3.0
 
