@@ -2,8 +2,8 @@
 %global pypi_name oslo.utils
 
 Name:           python-oslo-utils
-Version:        1.4.0
-Release:        2%{?dist}
+Version:        1.6.0
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -21,6 +21,7 @@ Requires:       python-iso8601
 Requires:       python-six
 Requires:       python-netaddr >= 0.7.12
 Requires:       python-netifaces >= 0.10.4
+Requires:       python-debtcollector >= 0.3.0
 
 %description
 The OpenStack Oslo Utility library.
@@ -34,9 +35,10 @@ Summary:    Documentation for the Oslo Utility library
 Group:      Documentation
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx >= 2.3.0
+BuildRequires:  python-oslo-sphinx
 # for API autodoc
 BuildRequires:  python-netifaces
+BuildRequires:  python-debtcollector
 
 %description doc
 Documentation for the Oslo Utility library.
@@ -63,16 +65,21 @@ rm -rf html/.{doctrees,buildinfo}
 
 
 %files
-%doc README.rst LICENSE
+%doc README.rst
+%license LICENSE
 %{python2_sitelib}/oslo
 %{python2_sitelib}/oslo_utils
 %{python2_sitelib}/*.egg-info
 %{python2_sitelib}/*-nspkg.pth
 
 %files doc
-%doc html LICENSE
+%doc html
+%license LICENSE
 
 %changelog
+* Fri Jun 26 2015 Alan Pevec <alan.pevec@redhat.com> 1.6.0-1
+- Update to upstream 1.6.0
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
