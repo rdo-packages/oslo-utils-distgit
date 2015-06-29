@@ -3,7 +3,7 @@
 
 Name:           python-oslo-utils
 Version:        1.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -18,10 +18,11 @@ Requires:       python-oslo-config
 Requires:       python-oslo-i18n
 Requires:       python-babel
 Requires:       python-iso8601
-Requires:       python-six
+Requires:       python-six >= 1.9.0
 Requires:       python-netaddr >= 0.7.12
 Requires:       python-netifaces >= 0.10.4
 Requires:       python-debtcollector >= 0.3.0
+Requires:       pytz
 
 %description
 The OpenStack Oslo Utility library.
@@ -77,7 +78,7 @@ rm -rf html/.{doctrees,buildinfo}
 %license LICENSE
 
 %changelog
-* Fri Jun 26 2015 Alan Pevec <alan.pevec@redhat.com> 1.6.0-1
+* Mon Jun 29 2015 Alan Pevec <alan.pevec@redhat.com> 1.6.0-2
 - Update to upstream 1.6.0
 
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.0-2
