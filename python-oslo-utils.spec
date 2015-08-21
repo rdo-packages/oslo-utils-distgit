@@ -3,7 +3,7 @@
 
 Name:           python-oslo-utils
 Version:        2.2.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -23,6 +23,7 @@ Requires:       python-netaddr >= 0.7.12
 Requires:       python-netifaces >= 0.10.4
 Requires:       python-debtcollector >= 0.3.0
 Requires:       pytz
+Requires:       python-monotonic
 
 %description
 The OpenStack Oslo Utility library.
@@ -76,6 +77,9 @@ rm -rf html/.{doctrees,buildinfo}
 %license LICENSE
 
 %changelog
+* Fri Aug 21 2015 Matthias Runge <mrunge@redhat.com> 2.2.0-2
+- add missing requires: python-monotonic
+
 * Mon Aug 17 2015 Alan Pevec <alan.pevec@redhat.com> 2.2.0-1
 - Update to upstream 2.2.0
 
