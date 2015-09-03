@@ -1,5 +1,6 @@
-# Created by pyp2rpm-1.1.0b
 %global pypi_name oslo.utils
+
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-oslo-utils
 Version:        2.4.0
@@ -25,6 +26,7 @@ Requires:       python-debtcollector >= 0.3.0
 Requires:       pytz
 Requires:       python-monotonic
 
+
 %description
 The OpenStack Oslo Utility library.
 * Documentation: http://docs.openstack.org/developer/oslo.utils
@@ -41,16 +43,18 @@ BuildRequires:  python-oslo-sphinx
 # for API autodoc
 BuildRequires:  python-netifaces
 BuildRequires:  python-debtcollector
+BuildRequires:  python-oslo-i18n
+BuildRequires:  python-netaddr
 
 %description doc
 Documentation for the Oslo Utility library.
 
 
 %prep
-%setup -q -n %{pypi_name}-%{version}
+%setup -q -n %{pypi_name}-%{upstream_version}
 
 # Let RPM handle the dependencies
-rm -f requirements.txt
+rm -f {test-,}requirements.txt
 
 
 %build
