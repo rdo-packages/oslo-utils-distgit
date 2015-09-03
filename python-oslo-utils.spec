@@ -2,8 +2,8 @@
 %global pypi_name oslo.utils
 
 Name:           python-oslo-utils
-Version:        2.2.0
-Release:        2%{?dist}
+Version:        2.4.0
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -77,6 +77,9 @@ rm -rf html/.{doctrees,buildinfo}
 %license LICENSE
 
 %changelog
+* Thu Sep 03 2015 Alan Pevec <alan.pevec@redhat.com> 2.4.0-1
+- Update to upstream 2.4.0
+
 * Fri Aug 21 2015 Matthias Runge <mrunge@redhat.com> 2.2.0-2
 - add missing requires: python-monotonic
 
