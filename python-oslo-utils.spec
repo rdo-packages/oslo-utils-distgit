@@ -7,8 +7,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-oslo-utils
-Version:        2.4.0
-Release:        2%{?dist}
+Version:        2.5.0
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -161,6 +161,9 @@ rm -fr doc/build/html/.buildinfo
 %endif
 
 %changelog
+* Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 2.5.0-1
+- Update to upstream 2.5.0
+
 * Mon Sep 07 2015 Chandan Kumar <chkumar246@gmail.com> 2.4.0-2
 - Added python2 and python3 subpackages
 
