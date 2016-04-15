@@ -1,14 +1,15 @@
 %global pypi_name oslo.utils
+%global pkg_name oslo-utils
 
-%if 0%{?fedora}
+%if 0%{?fedora} >= 24
 %global with_python3 1
 %endif
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-oslo-utils
-Version:        2.5.0
-Release:        3%{?dist}
+Version:        3.7.0
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -22,18 +23,33 @@ The OpenStack Oslo Utility library.
 * Source: http://git.openstack.org/cgit/openstack/oslo.utils
 * Bugs: http://bugs.launchpad.net/oslo
 
-%package -n python2-oslo-utils
+%package -n python2-%{pkg_name}
 Summary:        OpenStack Oslo Utility library
-%{?python_provide:%python_provide python2-oslo-utils}
-Provides:       python-oslo-utils = %{version}-%{release}
-Obsoletes:      python-oslo-utils < 2.4.0-2
+%{?python_provide:%python_provide python2-%{pkg_name}}
 
 BuildRequires:  python2-devel
+BuildRequires:  python-funcsigs
 BuildRequires:  python-pbr
+# Required for documentation building
+BuildRequires:  python-iso8601
+BuildRequires:  python-monotonic
+BuildRequires:  pytz
 
+# test requirements
+BuildRequires:  python-hacking
+BuildRequires:  python-fixtures
+BuildRequires:  python-oslo-config
+BuildRequires:  python-oslotest
+BuildRequires:  python-testscenarios
+BuildRequires:  python-testtools
+BuildRequires:  python-testrepository
+BuildRequires:  python-funcsigs
+
+Requires:       python-funcsigs
 Requires:       python-oslo-config
 Requires:       python-oslo-i18n
 Requires:       python-babel
+Requires:       python-funcsigs
 Requires:       python-iso8601
 Requires:       python-six >= 1.9.0
 Requires:       python-netaddr >= 0.7.12
@@ -42,38 +58,62 @@ Requires:       python-debtcollector >= 0.3.0
 Requires:       pytz
 Requires:       python-monotonic
 
-%description -n python2-oslo-utils
+%description -n python2-%{pkg_name}
 The OpenStack Oslo Utility library.
 * Documentation: http://docs.openstack.org/developer/oslo.utils
 * Source: http://git.openstack.org/cgit/openstack/oslo.utils
 * Bugs: http://bugs.launchpad.net/oslo
 
-%package -n python2-oslo-utils-doc
+
+%package -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo Utility library
-%{?python_provide:%python_provide python2-oslo-utils-doc}
-Provides:       python-oslo-utils-doc = %{version}-%{release}
-Obsoletes:      python-oslo-utils-doc < 2.4.0-2
 
 BuildRequires:  python-sphinx
 BuildRequires:  python-oslo-sphinx
 # for API autodoc
+BuildRequires:  python-iso8601
+BuildRequires:  python-monotonic
 BuildRequires:  python-netifaces
 BuildRequires:  python-debtcollector
 BuildRequires:  python-oslo-i18n
 BuildRequires:  python-netaddr
 
-%description -n python2-oslo-utils-doc
+%description -n python-%{pkg_name}-doc
 Documentation for the Oslo Utility library.
 
-# python3 subpackage
+%package -n python-%{pkg_name}-tests
+Summary:    Tests for the Oslo Utility library
+
+Requires: python-%{pkg_name} = %{version}-%{release}
+Requires: python-hacking
+Requires: python-fixtures
+Requires: python-oslotest
+Requires: python-testscenarios
+Requires: python-testtools
+Requires: python-testrepository
+
+%description -n python-%{pkg_name}-tests
+Tests for the Oslo Utility library.
+
 %if 0%{?with_python3}
-%package -n python3-oslo-utils
+%package -n python3-%{pkg_name}
 Summary:        OpenStack Oslo Utility library
-%{?python_provide:%python_provide python3-oslo-utils}
+%{?python_provide:%python_provide python3-%{pkg_name}}
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 
+# test requirements
+BuildRequires:  python3-hacking
+BuildRequires:  python3-fixtures
+BuildRequires:  python3-oslo-config
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-testscenarios
+BuildRequires:  python3-testtools
+BuildRequires:  python3-testrepository
+BuildRequires:  python3-funcsigs
+
+Requires:       python3-funcsigs
 Requires:       python3-oslo-config
 Requires:       python3-oslo-i18n
 Requires:       python3-babel
@@ -85,28 +125,11 @@ Requires:       python3-debtcollector >= 0.3.0
 Requires:       python3-pytz
 Requires:       python3-monotonic
 
-%description -n python3-oslo-utils
+%description -n python3-%{pkg_name}
 The OpenStack Oslo Utility library.
 * Documentation: http://docs.openstack.org/developer/oslo.utils
 * Source: http://git.openstack.org/cgit/openstack/oslo.utils
 * Bugs: http://bugs.launchpad.net/oslo
-%endif
-
-%if 0%{?with_python3}
-%package -n python3-oslo-utils-doc
-Summary:    Documentation for the Oslo Utility library
-%{?python_provide:%python_provide python3-oslo-utils-doc}
-
-BuildRequires:  python3-sphinx
-BuildRequires:  python3-oslo-sphinx
-# for API autodoc
-BuildRequires:  python3-netifaces
-BuildRequires:  python3-debtcollector
-BuildRequires:  python3-oslo-i18n
-BuildRequires:  python3-netaddr
-
-%description -n python3-oslo-utils-doc
-Documentation for the Oslo Utility library.
 %endif
 
 %prep
@@ -115,9 +138,8 @@ Documentation for the Oslo Utility library.
 # Let RPM handle the dependencies
 rm -f {test-,}requirements.txt
 
-
 %build
-%{__python2} setup.py build
+%py2_build
 
 # generate html docs
 sphinx-build doc/source html
@@ -125,83 +147,45 @@ sphinx-build doc/source html
 rm -rf html/.{doctrees,buildinfo}
 
 %if 0%{?with_python3}
-%{__python3} setup.py build
-sphinx-build-3 doc/source html
-# Fix hidden-file-or-dir warnings
-rm -fr doc/build/html/.buildinfo
+%py3_build
 %endif
 
 %install
-%{__python2} setup.py install --skip-build --root %{buildroot}
-
+%py2_install
 %if 0%{?with_python3}
-%{__python3} setup.py install --skip-build --root %{buildroot}
+%py3_install
 %endif
 
-%files -n python2-oslo-utils
+%check
+%if 0%{?with_python3}
+%{__python3} setup.py test
+%endif
+%{__python2} setup.py test
+
+%files -n python2-%{pkg_name}
 %doc README.rst
 %license LICENSE
 %{python2_sitelib}/oslo_utils
 %{python2_sitelib}/*.egg-info
-
-%files -n python2-oslo-utils-doc
-%doc html
-%license LICENSE
+%exclude %{python2_sitelib}/oslo_utils/tests
 
 %if 0%{?with_python3}
-%files -n python3-oslo-utils
+%files -n python3-%{pkg_name}
 %doc README.rst
 %license LICENSE
 %{python3_sitelib}/oslo_utils
 %{python3_sitelib}/*.egg-info
-
-%files -n python3-oslo-utils-doc
-%doc html
-%license LICENSE
+%exclude %{python3_sitelib}/oslo_utils/tests
 %endif
 
+%files -n python-%{pkg_name}-doc
+%doc html
+%license LICENSE
+
+%files -n python-%{pkg_name}-tests
+%{python2_sitelib}/oslo_utils/tests
+
 %changelog
-* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 2.5.0-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+* Tue Mar 22 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.7.0-
+- Update to 3.7.0
 
-* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.5.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
-
-* Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 2.5.0-1
-- Update to upstream 2.5.0
-
-* Mon Sep 07 2015 Chandan Kumar <chkumar246@gmail.com> 2.4.0-2
-- Added python2 and python3 subpackages
-
-* Thu Sep 03 2015 Alan Pevec <alan.pevec@redhat.com> 2.4.0-1
-- Update to upstream 2.4.0
-
-* Fri Aug 21 2015 Matthias Runge <mrunge@redhat.com> 2.2.0-2
-- add missing requires: python-monotonic
-
-* Mon Aug 17 2015 Alan Pevec <alan.pevec@redhat.com> 2.2.0-1
-- Update to upstream 2.2.0
-
-* Mon Jun 29 2015 Alan Pevec <alan.pevec@redhat.com> 1.6.0-2
-- Update to upstream 1.6.0
-
-* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
-
-* Tue Mar 31 2015 Alan Pevec <alan.pevec@redhat.com> 1.4.0-1
-- Update to 1.4.0
-
-* Tue Feb 24 2015 Alan Pevec <alan.pevec@redhat.com> 1.3.0-1
-- Update to upstream 1.3.0
-
-* Sun Sep 21 2014 Alan Pevec <alan.pevec@redhat.com> 1.0.0-1
-- Update to upstream 1.0.0
-
-* Thu Sep 11 2014 Alan Pevec <apevec@redhat.com> - 0.3.0-1
-- update to 0.3.0
-
-* Wed Aug 20 2014 Alan Pevec <apevec@redhat.com> - 0.2.0-1
-- update to 0.2.0
-
-* Thu Jul 31 2014 Alan Pevec <apevec@redhat.com> - 0.1.1-1
-- Initial package.
