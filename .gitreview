@@ -1,5 +1,5 @@
 [gerrit]
-host=review.gerrithub.io
+host=review.rdoproject.org
 port=29418
-project=openstack-packages/python-oslo-utils
-defaultbranch=rpm-master
+project=openstack/oslo-utils-distgit
+defaultbranch=mitaka-rdo
