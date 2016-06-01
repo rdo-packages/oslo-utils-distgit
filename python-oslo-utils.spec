@@ -99,6 +99,22 @@ Requires: python-testrepository
 Tests for the Oslo Utility library.
 
 %if 0%{?with_python3}
+%package -n python3-%{pkg_name}-tests
+Summary:    Tests for the Oslo Utility library
+
+Requires: python3-%{pkg_name} = %{version}-%{release}
+Requires: python3-hacking
+Requires: python3-fixtures
+Requires: python3-oslotest
+Requires: python3-testscenarios
+Requires: python3-testtools
+Requires: python3-testrepository
+
+%description -n python3-%{pkg_name}-tests
+Tests for the Oslo Utility library.
+%endif
+
+%if 0%{?with_python3}
 %package -n python3-%{pkg_name}
 Summary:        OpenStack Oslo Utility library
 %{?python_provide:%python_provide python3-%{pkg_name}}
@@ -212,5 +228,10 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %{python2_sitelib}/oslo_utils/tests
 
 %files -n python-%{pkg_name}-lang -f oslo_utils.lang
+
+%if 0%{?with_python3}
+%files -n python3-%{pkg_name}-tests
+%{python3_sitelib}/oslo_utils/tests
+%endif
 
 %changelog
