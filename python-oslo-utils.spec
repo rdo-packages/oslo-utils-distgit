@@ -9,7 +9,7 @@
 
 Name:           python-oslo-utils
 Version:        3.7.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -94,6 +94,22 @@ Requires: python-testrepository
 
 %description -n python-%{pkg_name}-tests
 Tests for the Oslo Utility library.
+
+%if 0%{?with_python3}
+%package -n python3-%{pkg_name}-tests
+Summary:    Tests for the Oslo Utility library
+
+Requires: python3-%{pkg_name} = %{version}-%{release}
+Requires: python3-hacking
+Requires: python3-fixtures
+Requires: python3-oslotest
+Requires: python3-testscenarios
+Requires: python3-testtools
+Requires: python3-testrepository
+
+%description -n python3-%{pkg_name}-tests
+Tests for the Oslo Utility library.
+%endif
 
 %if 0%{?with_python3}
 %package -n python3-%{pkg_name}
@@ -185,7 +201,15 @@ rm -rf html/.{doctrees,buildinfo}
 %files -n python-%{pkg_name}-tests
 %{python2_sitelib}/oslo_utils/tests
 
+%if 0%{?with_python3}
+%files -n python3-%{pkg_name}-tests
+%{python3_sitelib}/oslo_utils/tests
+%endif
+
 %changelog
-* Tue Mar 22 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.7.0-
+* Wed Jun 01 2016 Charalampos Stratakis <cstratak@redhat.com> 3.7.0-2
+- Provide a python 3 tests subpackage
+
+* Tue Mar 22 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.7.0-1
 - Update to 3.7.0
 
