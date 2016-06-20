@@ -44,6 +44,8 @@ BuildRequires:  python-testscenarios
 BuildRequires:  python-testtools
 BuildRequires:  python-testrepository
 BuildRequires:  python-funcsigs
+# Required to compile translation files
+BuildRequires:  python-babel
 
 Requires:       python-funcsigs
 Requires:       python-oslo-config
@@ -57,6 +59,7 @@ Requires:       python-netifaces >= 0.10.4
 Requires:       python-debtcollector >= 0.3.0
 Requires:       pytz
 Requires:       python-monotonic
+Requires:       python-%{pkg_name}-lang >= %{version}-%{release}
 
 %description -n python2-%{pkg_name}
 The OpenStack Oslo Utility library.
@@ -124,6 +127,7 @@ Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-debtcollector >= 0.3.0
 Requires:       python3-pytz
 Requires:       python3-monotonic
+Requires:       python-%{pkg_name}-lang >= %{version}-%{release}
 
 %description -n python3-%{pkg_name}
 The OpenStack Oslo Utility library.
@@ -131,6 +135,12 @@ The OpenStack Oslo Utility library.
 * Source: http://git.openstack.org/cgit/openstack/oslo.utils
 * Bugs: http://bugs.launchpad.net/oslo
 %endif
+
+%package  -n python-%{pkg_name}-lang
+Summary:   Translation files for Oslo utils library
+
+%description -n python-%{pkg_name}-lang
+Translation files for Oslo utils library
 
 %prep
 %setup -q -n %{pypi_name}-%{upstream_version}
@@ -146,6 +156,9 @@ sphinx-build doc/source html
 # remove the sphinx-build leftovers
 rm -rf html/.{doctrees,buildinfo}
 
+# Generate i18n files
+%{__python2} setup.py compile_catalog -d build/lib/oslo_utils/locale
+
 %if 0%{?with_python3}
 %py3_build
 %endif
@@ -155,6 +168,19 @@ rm -rf html/.{doctrees,buildinfo}
 %if 0%{?with_python3}
 %py3_install
 %endif
+
+# Install i18n .mo files (.po and .pot are not required)
+install -d -m 755 %{buildroot}%{_datadir}
+rm -f %{buildroot}%{python2_sitelib}/oslo_utils/locale/*/LC_*/oslo_utils*po
+rm -f %{buildroot}%{python2_sitelib}/oslo_utils/locale/*pot
+mv %{buildroot}%{python2_sitelib}/oslo_utils/locale %{buildroot}%{_datadir}/locale
+%if 0%{?with_python3}
+rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
+%endif
+
+# Find language files
+%find_lang oslo_utils --all-name
+
 
 %check
 %if 0%{?with_python3}
@@ -184,5 +210,7 @@ rm -rf html/.{doctrees,buildinfo}
 
 %files -n python-%{pkg_name}-tests
 %{python2_sitelib}/oslo_utils/tests
+
+%files -n python-%{pkg_name}-lang -f oslo_utils.lang  
 
 %changelog
