@@ -36,6 +36,7 @@ BuildRequires:  python-monotonic
 BuildRequires:  pytz
 
 # test requirements
+BuildRequires:  pyparsing
 BuildRequires:  python-hacking
 BuildRequires:  python-fixtures
 BuildRequires:  python-oslo-config
@@ -47,6 +48,7 @@ BuildRequires:  python-funcsigs
 # Required to compile translation files
 BuildRequires:  python-babel
 
+Requires:       pyparsing
 Requires:       python-funcsigs
 Requires:       python-oslo-config
 Requires:       python-oslo-i18n
