@@ -8,13 +8,13 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-oslo-utils
-Version:        3.7.0
-Release:        2%{?dist}
+Version:        3.8.0
+Release:        1%{?dist}%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
 URL:            http://launchpad.net/oslo
-Source0:        https://pypi.python.org/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+Source0:        https://pypi.io/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
 %description
@@ -54,7 +54,7 @@ Requires:       python-iso8601
 Requires:       python-six >= 1.9.0
 Requires:       python-netaddr >= 0.7.12
 Requires:       python-netifaces >= 0.10.4
-Requires:       python-debtcollector >= 0.3.0
+Requires:       python-debtcollector >= 1.2.0
 Requires:       pytz
 Requires:       python-monotonic
 
@@ -137,7 +137,7 @@ Requires:       python3-iso8601
 Requires:       python3-six >= 1.9.0
 Requires:       python3-netaddr >= 0.7.12
 Requires:       python3-netifaces >= 0.10.4
-Requires:       python3-debtcollector >= 0.3.0
+Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-pytz
 Requires:       python3-monotonic
 
@@ -207,6 +207,9 @@ rm -rf html/.{doctrees,buildinfo}
 %endif
 
 %changelog
+* Tue Sep 06 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.8.0-1.fc24
+- Update to 3.8.0
+
 * Wed Jun 01 2016 Charalampos Stratakis <cstratak@redhat.com> 3.7.0-2
 - Provide a python 3 tests subpackage
 
