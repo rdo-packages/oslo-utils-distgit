@@ -9,7 +9,7 @@
 
 Name:           python-oslo-utils
 Version:        3.8.0
-Release:        1%{?dist}%{?dist}
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
