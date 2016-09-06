@@ -8,8 +8,8 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-oslo-utils
-Version:        XXX
-Release:        XXX
+Version:        3.16.0
+Release:        1
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -237,3 +237,6 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %endif
 
 %changelog
+* Tue Sep 06 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.16.0-1
+- Update to 3.16.0
+
