@@ -230,6 +230,7 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %{python2_sitelib}/oslo_utils/tests
 
 %files -n python-%{pkg_name}-lang -f oslo_utils.lang
+%license LICENSE
 
 %if 0%{?with_python3}
 %files -n python3-%{pkg_name}-tests
