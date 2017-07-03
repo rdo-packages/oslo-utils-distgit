@@ -34,6 +34,7 @@ BuildRequires:  python-pbr
 BuildRequires:  python-iso8601
 BuildRequires:  python-monotonic
 BuildRequires:  pytz
+BuildRequires:  git
 
 # test requirements
 BuildRequires:  pyparsing
@@ -74,7 +75,7 @@ The OpenStack Oslo Utility library.
 Summary:    Documentation for the Oslo Utility library
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
 # for API autodoc
 BuildRequires:  python-iso8601
 BuildRequires:  python-monotonic
@@ -161,7 +162,7 @@ Summary:   Translation files for Oslo utils library
 Translation files for Oslo utils library
 
 %prep
-%setup -q -n %{pypi_name}-%{upstream_version}
+%autosetup -n %{pypi_name}-%{upstream_version} -S git
 
 # Let RPM handle the dependencies
 rm -f {test-,}requirements.txt
@@ -170,9 +171,9 @@ rm -f {test-,}requirements.txt
 %py2_build
 
 # generate html docs
-sphinx-build doc/source html
+%{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 # Generate i18n files
 %{__python2} setup.py compile_catalog -d build/lib/oslo_utils/locale
@@ -223,7 +224,7 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %endif
 
 %files -n python-%{pkg_name}-doc
-%doc html
+%doc doc/build/html
 %license LICENSE
 
 %files -n python-%{pkg_name}-tests
