@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a890539_3304f014",
+        "filename": "python-oslo-utils.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-08-04T11:09:25Z",
+      "side": 1,
+      "message": "We need to keep python-babel as BuildRequires to compile translation files, see line 172",
+      "revId": "68a73129b7365c26d4ed4e56d238ae632b06864e",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
