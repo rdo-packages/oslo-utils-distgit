@@ -40,26 +40,22 @@ BuildRequires:  git
 BuildRequires:  pyparsing
 BuildRequires:  python-hacking
 BuildRequires:  python-fixtures
-BuildRequires:  python-oslo-config
 BuildRequires:  python-oslotest
 BuildRequires:  python-testscenarios
 BuildRequires:  python-testtools
 BuildRequires:  python-testrepository
 BuildRequires:  python-funcsigs
 # Required to compile translation files
-BuildRequires:  python-babel
 
 Requires:       pyparsing
 Requires:       python-funcsigs
-Requires:       python-oslo-config
-Requires:       python-oslo-i18n
-Requires:       python-babel
+Requires:       python-oslo-i18n >= 2.1.0
 Requires:       python-funcsigs
 Requires:       python-iso8601
 Requires:       python-six >= 1.9.0
 Requires:       python-netaddr >= 0.7.12
 Requires:       python-netifaces >= 0.10.4
-Requires:       python-debtcollector >= 0.3.0
+Requires:       python-debtcollector >= 1.2.0
 Requires:       pytz
 Requires:       python-monotonic
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
@@ -128,7 +124,6 @@ BuildRequires:  python3-pbr
 # test requirements
 BuildRequires:  python3-hacking
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-oslo-config
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
@@ -136,14 +131,12 @@ BuildRequires:  python3-testrepository
 BuildRequires:  python3-funcsigs
 
 Requires:       python3-funcsigs
-Requires:       python3-oslo-config
-Requires:       python3-oslo-i18n
-Requires:       python3-babel
+Requires:       python3-oslo-i18n >= 2.1.0
 Requires:       python3-iso8601
 Requires:       python3-six >= 1.9.0
 Requires:       python3-netaddr >= 0.7.12
 Requires:       python3-netifaces >= 0.10.4
-Requires:       python3-debtcollector >= 0.3.0
+Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-pytz
 Requires:       python3-monotonic
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
