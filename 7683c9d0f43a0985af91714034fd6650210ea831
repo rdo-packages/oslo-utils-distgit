@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a890539_90d03af9",
+        "filename": "python-oslo-utils.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-08-04T10:19:15Z",
+      "side": 1,
+      "message": "oslo-config is not longer required, you can remove it.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "7683c9d0f43a0985af91714034fd6650210ea831",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a890539_50fed26c",
+        "filename": "python-oslo-utils.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2017-08-04T10:19:15Z",
+      "side": 1,
+      "message": "not required, you can remove it.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "7683c9d0f43a0985af91714034fd6650210ea831",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
