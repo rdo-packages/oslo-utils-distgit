@@ -51,7 +51,6 @@ BuildRequires:  python-babel
 Requires:       pyparsing
 Requires:       python-funcsigs
 Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-funcsigs
 Requires:       python-iso8601
 Requires:       python-six >= 1.9.0
 Requires:       python-netaddr >= 0.7.12
@@ -123,6 +122,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
 
 # test requirements
+BuildRequires:  python3-pyparsing
 BuildRequires:  python3-hacking
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-oslotest
@@ -131,6 +131,7 @@ BuildRequires:  python3-testtools
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-funcsigs
 
+Requires:       python3-pyparsing
 Requires:       python3-funcsigs
 Requires:       python3-oslo-i18n >= 2.1.0
 Requires:       python3-iso8601
