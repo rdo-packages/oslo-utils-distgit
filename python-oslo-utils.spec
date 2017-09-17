@@ -130,6 +130,7 @@ BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-funcsigs
+BuildRequires:  openstack-macros
 
 Requires:       python3-pyparsing
 Requires:       python3-funcsigs
@@ -160,7 +161,7 @@ Translation files for Oslo utils library
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
 
 # Let RPM handle the dependencies
-rm -f {test-,}requirements.txt
+%py_req_cleanup
 
 %build
 %py2_build
