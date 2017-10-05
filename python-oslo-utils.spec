@@ -7,6 +7,14 @@
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
+%global common_desc \
+The OpenStack Oslo Utility library. \
+* Documentation: http://docs.openstack.org/developer/oslo.utils \
+* Source: http://git.openstack.org/cgit/openstack/oslo.utils \
+* Bugs: http://bugs.launchpad.net/oslo
+
+%global common_desc_tests Tests for the Oslo Utility library.
+
 Name:           python-oslo-utils
 Version:        XXX
 Release:        XXX
@@ -18,10 +26,7 @@ Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstr
 BuildArch:      noarch
 
 %description
-The OpenStack Oslo Utility library.
-* Documentation: http://docs.openstack.org/developer/oslo.utils
-* Source: http://git.openstack.org/cgit/openstack/oslo.utils
-* Bugs: http://bugs.launchpad.net/oslo
+%{common_desc}
 
 %package -n python2-%{pkg_name}
 Summary:        OpenStack Oslo Utility library
@@ -61,11 +66,7 @@ Requires:       python-monotonic
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-%{pkg_name}
-The OpenStack Oslo Utility library.
-* Documentation: http://docs.openstack.org/developer/oslo.utils
-* Source: http://git.openstack.org/cgit/openstack/oslo.utils
-* Bugs: http://bugs.launchpad.net/oslo
-
+%{common_desc}
 
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo Utility library
@@ -95,7 +96,7 @@ Requires: python-testtools
 Requires: python-testrepository
 
 %description -n python-%{pkg_name}-tests
-Tests for the Oslo Utility library.
+%{common_desc_tests}
 
 %if 0%{?with_python3}
 %package -n python3-%{pkg_name}-tests
@@ -110,7 +111,7 @@ Requires: python3-testtools
 Requires: python3-testrepository
 
 %description -n python3-%{pkg_name}-tests
-Tests for the Oslo Utility library.
+%{common_desc_tests}
 %endif
 
 %if 0%{?with_python3}
@@ -144,10 +145,7 @@ Requires:       python3-monotonic
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}
-The OpenStack Oslo Utility library.
-* Documentation: http://docs.openstack.org/developer/oslo.utils
-* Source: http://git.openstack.org/cgit/openstack/oslo.utils
-* Bugs: http://bugs.launchpad.net/oslo
+%{common_desc}
 %endif
 
 %package  -n python-%{pkg_name}-lang
