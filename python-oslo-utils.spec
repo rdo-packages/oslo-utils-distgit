@@ -84,8 +84,9 @@ BuildRequires:  python-netaddr
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo Utility library.
 
-%package -n python-%{pkg_name}-tests
+%package -n python2-%{pkg_name}-tests
 Summary:    Tests for the Oslo Utility library
+%{?python_provide:%python_provide python2-%{pkg_name}-tests}
 
 Requires: python-%{pkg_name} = %{version}-%{release}
 Requires: python-hacking
@@ -95,12 +96,13 @@ Requires: python-testscenarios
 Requires: python-testtools
 Requires: python-testrepository
 
-%description -n python-%{pkg_name}-tests
+%description -n python2-%{pkg_name}-tests
 %{common_desc_tests}
 
 %if 0%{?with_python3}
 %package -n python3-%{pkg_name}-tests
 Summary:    Tests for the Oslo Utility library
+%{?python_provide:%python_provide python3-%{pkg_name}-tests}
 
 Requires: python3-%{pkg_name} = %{version}-%{release}
 Requires: python3-hacking
@@ -221,7 +223,7 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %doc doc/build/html
 %license LICENSE
 
-%files -n python-%{pkg_name}-tests
+%files -n python2-%{pkg_name}-tests
 %{python2_sitelib}/oslo_utils/tests
 
 %files -n python-%{pkg_name}-lang -f oslo_utils.lang
