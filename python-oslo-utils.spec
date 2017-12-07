@@ -50,6 +50,7 @@ BuildRequires:  python-testscenarios
 BuildRequires:  python-testtools
 BuildRequires:  python-testrepository
 BuildRequires:  python-funcsigs
+BuildRequires:  python-ddt
 # Required to compile translation files
 BuildRequires:  python-babel
 
@@ -95,6 +96,7 @@ Requires: python-oslotest
 Requires: python-testscenarios
 Requires: python-testtools
 Requires: python-testrepository
+Requires: python-ddt
 
 %description -n python2-%{pkg_name}-tests
 %{common_desc_tests}
@@ -111,6 +113,7 @@ Requires: python3-oslotest
 Requires: python3-testscenarios
 Requires: python3-testtools
 Requires: python3-testrepository
+Requires: python3-ddt
 
 %description -n python3-%{pkg_name}-tests
 %{common_desc_tests}
@@ -133,6 +136,7 @@ BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-funcsigs
+BuildRequires:  python3-ddt
 BuildRequires:  openstack-macros
 
 Requires:       python3-pyparsing
