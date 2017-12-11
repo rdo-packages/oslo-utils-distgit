@@ -25,6 +25,9 @@ URL:            http://launchpad.net/oslo
 Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstream_version}.tar.gz
 BuildArch:      noarch
 
+BuildRequires:  git
+BuildRequires:  openstack-macros
+
 %description
 %{common_desc}
 
@@ -39,7 +42,6 @@ BuildRequires:  python-pbr
 BuildRequires:  python-iso8601
 BuildRequires:  python-monotonic
 BuildRequires:  pytz
-BuildRequires:  git
 
 # test requirements
 BuildRequires:  pyparsing
@@ -137,7 +139,6 @@ BuildRequires:  python3-testtools
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-funcsigs
 BuildRequires:  python3-ddt
-BuildRequires:  openstack-macros
 
 Requires:       python3-pyparsing
 Requires:       python3-funcsigs
