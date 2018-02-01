@@ -36,36 +36,51 @@ Summary:        OpenStack Oslo Utility library
 %{?python_provide:%python_provide python2-%{pkg_name}}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-funcsigs
-BuildRequires:  python-pbr
+BuildRequires:  python2-funcsigs
+BuildRequires:  python2-pbr
 # Required for documentation building
-BuildRequires:  python-iso8601
-BuildRequires:  python-monotonic
-BuildRequires:  pytz
+BuildRequires:  python2-iso8601
 
 # test requirements
-BuildRequires:  pyparsing
-BuildRequires:  python-hacking
-BuildRequires:  python-fixtures
-BuildRequires:  python-oslotest
-BuildRequires:  python-testscenarios
-BuildRequires:  python-testtools
-BuildRequires:  python-testrepository
-BuildRequires:  python-funcsigs
-BuildRequires:  python-ddt
+BuildRequires:  python2-hacking
+BuildRequires:  python2-fixtures
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-testtools
+BuildRequires:  python2-funcsigs
+BuildRequires:  python2-ddt
 # Required to compile translation files
-BuildRequires:  python-babel
+BuildRequires:  python2-babel
+%if 0%{?fedora} > 0
+BuildRequires:  python2-pyparsing
+BuildRequires:  python2-monotonic
+BuildRequires:  python2-pytz
+BuildRequires:  python2-testscenarios
+BuildRequires:  python2-testrepository
+%else
+BuildRequires:  pyparsing
+BuildRequires:  python-monotonic
+BuildRequires:  pytz
+BuildRequires:  python-testscenarios
+BuildRequires:  python-testrepository
+%endif
 
+Requires:       python2-funcsigs
+Requires:       python2-oslo-i18n >= 3.15.3
+Requires:       python2-iso8601
+Requires:       python2-six >= 1.10.0
+Requires:       python2-netifaces >= 0.10.4
+Requires:       python2-debtcollector >= 1.2.0
+%if 0%{?fedora} > 0
+Requires:       python2-pyparsing
+Requires:       python2-netaddr >= 0.7.18
+Requires:       python2-monotonic
+Requires:       python2-pytz
+%else
 Requires:       pyparsing
-Requires:       python-funcsigs
-Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-iso8601
-Requires:       python-six >= 1.9.0
-Requires:       python-netaddr >= 0.7.12
-Requires:       python-netifaces >= 0.10.4
-Requires:       python-debtcollector >= 1.2.0
-Requires:       pytz
+Requires:       python-netaddr >= 0.7.18
 Requires:       python-monotonic
+Requires:       pytz
+%endif
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-%{pkg_name}
@@ -74,15 +89,20 @@ Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo Utility library
 
-BuildRequires:  python-sphinx
-BuildRequires:  python-openstackdocstheme
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-openstackdocstheme
 # for API autodoc
-BuildRequires:  python-iso8601
+BuildRequires:  python2-iso8601
+BuildRequires:  python2-netifaces
+BuildRequires:  python2-debtcollector
+BuildRequires:  python2-oslo-i18n
+%if 0%{?fedora} > 0
+BuildRequires:  python2-monotonic
+BuildRequires:  python2-netaddr
+%else
 BuildRequires:  python-monotonic
-BuildRequires:  python-netifaces
-BuildRequires:  python-debtcollector
-BuildRequires:  python-oslo-i18n
 BuildRequires:  python-netaddr
+%endif
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo Utility library.
@@ -91,14 +111,19 @@ Documentation for the Oslo Utility library.
 Summary:    Tests for the Oslo Utility library
 %{?python_provide:%python_provide python2-%{pkg_name}-tests}
 
-Requires: python-%{pkg_name} = %{version}-%{release}
-Requires: python-hacking
-Requires: python-fixtures
-Requires: python-oslotest
+Requires: python2-%{pkg_name} = %{version}-%{release}
+Requires: python2-hacking
+Requires: python2-fixtures
+Requires: python2-oslotest
+Requires: python2-testtools
+Requires: python2-ddt
+%if 0%{?fedora} > 0
+Requires: python2-testscenarios
+Requires: python2-testrepository
+%else
 Requires: python-testscenarios
-Requires: python-testtools
 Requires: python-testrepository
-Requires: python-ddt
+%endif
 
 %description -n python2-%{pkg_name}-tests
 %{common_desc_tests}
@@ -142,10 +167,10 @@ BuildRequires:  python3-ddt
 
 Requires:       python3-pyparsing
 Requires:       python3-funcsigs
-Requires:       python3-oslo-i18n >= 2.1.0
+Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-iso8601
-Requires:       python3-six >= 1.9.0
-Requires:       python3-netaddr >= 0.7.12
+Requires:       python3-six >= 1.10.0
+Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-pytz
