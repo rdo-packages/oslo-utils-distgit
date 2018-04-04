@@ -267,3 +267,4 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.utils/commit/?id=da8d3c3bbcb640d91e2b014345387b532cc9978f
