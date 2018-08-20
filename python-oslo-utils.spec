@@ -138,6 +138,9 @@ Summary:    Tests for the Oslo Utility library
 Requires: python3-%{pkg_name} = %{version}-%{release}
 Requires: python3-hacking
 Requires: python3-fixtures
+Requires: python3-monotonic
+Requires: python3-netaddr
+Requires: python3-oslo-i18n
 Requires: python3-oslotest
 Requires: python3-testscenarios
 Requires: python3-testtools
@@ -160,6 +163,9 @@ BuildRequires:  python3-pbr
 BuildRequires:  python3-pyparsing
 BuildRequires:  python3-hacking
 BuildRequires:  python3-fixtures
+BuildRequires:  python3-monotonic
+BuildRequires:  python3-netaddr
+BuildRequires:  python3-oslo-i18n
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
