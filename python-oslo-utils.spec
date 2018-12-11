@@ -165,6 +165,7 @@ BuildRequires:  python3-hacking
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-monotonic
 BuildRequires:  python3-netaddr
+BuildRequires:  python3-netifaces
 BuildRequires:  python3-oslo-i18n
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-testscenarios
