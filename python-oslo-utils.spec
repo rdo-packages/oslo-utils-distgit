@@ -1,9 +1,11 @@
 %global pypi_name oslo.utils
 %global pkg_name oslo-utils
 
-%if 0%{?fedora} >= 24
+%if 0%{?fedora} >= 24 || 0%{?rhel} > 7
 %global with_python3 1
 %endif
+
+%global with_doc 1
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
@@ -38,9 +40,8 @@ Summary:        OpenStack Oslo Utility library
 BuildRequires:  python2-devel
 BuildRequires:  python2-funcsigs
 BuildRequires:  python2-pbr
-# Required for documentation building
 BuildRequires:  python2-iso8601
-
+BuildRequires:  python2-debtcollector
 # test requirements
 BuildRequires:  python2-hacking
 BuildRequires:  python2-fixtures
@@ -48,17 +49,22 @@ BuildRequires:  python2-oslotest
 BuildRequires:  python2-testtools
 BuildRequires:  python2-funcsigs
 BuildRequires:  python2-ddt
+BuildRequires:  python2-oslo-i18n
 # Required to compile translation files
 BuildRequires:  python2-babel
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 BuildRequires:  python2-pyparsing
 BuildRequires:  python2-monotonic
 BuildRequires:  python2-pytz
 BuildRequires:  python2-testscenarios
 BuildRequires:  python2-testrepository
+BuildRequires:  python2-netaddr
+BuildRequires:  python2-netifaces
 %else
 BuildRequires:  pyparsing
 BuildRequires:  python-monotonic
+BuildRequires:  python-netaddr
+BuildRequires:  python-netifaces
 BuildRequires:  pytz
 BuildRequires:  python-testscenarios
 BuildRequires:  python-testrepository
@@ -69,7 +75,7 @@ Requires:       python2-oslo-i18n >= 3.15.3
 Requires:       python2-iso8601
 Requires:       python2-six >= 1.10.0
 Requires:       python2-debtcollector >= 1.2.0
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 Requires:       python2-pyparsing
 Requires:       python2-netaddr >= 0.7.18
 Requires:       python2-monotonic
@@ -87,27 +93,16 @@ Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 %description -n python2-%{pkg_name}
 %{common_desc}
 
+%if 0%{?with_doc}
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo Utility library
 
 BuildRequires:  python2-sphinx
 BuildRequires:  python2-openstackdocstheme
-# for API autodoc
-BuildRequires:  python2-iso8601
-BuildRequires:  python2-debtcollector
-BuildRequires:  python2-oslo-i18n
-%if 0%{?fedora} > 0
-BuildRequires:  python2-monotonic
-BuildRequires:  python2-netaddr
-BuildRequires:  python2-netifaces
-%else
-BuildRequires:  python-monotonic
-BuildRequires:  python-netaddr
-BuildRequires:  python-netifaces
-%endif
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo Utility library.
+%endif
 
 %package -n python2-%{pkg_name}-tests
 Summary:    Tests for the Oslo Utility library
@@ -119,7 +114,7 @@ Requires: python2-fixtures
 Requires: python2-oslotest
 Requires: python2-testtools
 Requires: python2-ddt
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 Requires: python2-testscenarios
 Requires: python2-testrepository
 %else
@@ -205,10 +200,12 @@ Translation files for Oslo utils library
 %build
 %py2_build
 
+%if 0%{?with_doc}
 # generate html docs
 sphinx-build -W -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 # Generate i18n files
 %{__python2} setup.py compile_catalog -d build/lib/oslo_utils/locale
@@ -258,9 +255,11 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %exclude %{python3_sitelib}/oslo_utils/tests
 %endif
 
+%if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
 %doc doc/build/html
 %license LICENSE
+%endif
 
 %files -n python2-%{pkg_name}-tests
 %{python2_sitelib}/oslo_utils/tests
