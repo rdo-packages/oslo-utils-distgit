@@ -1,0 +1,9 @@
+Code-Review+2: hguemar <hguemar@fedoraproject.org>
+Code-Review+2: Matthias Runge <mrunge@redhat.com>
+Workflow+1: Matthias Runge <mrunge@redhat.com>
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Thu, 10 Jan 2019 18:38:28 +0000
+Reviewed-on: https://review.rdoproject.org/r/18195
+Project: openstack/oslo-utils-distgit
+Branch: refs/heads/rpm-master
