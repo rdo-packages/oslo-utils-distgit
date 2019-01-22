@@ -43,6 +43,7 @@ BuildRequires:  python2-pbr
 BuildRequires:  python2-iso8601
 BuildRequires:  python2-debtcollector
 # test requirements
+BuildRequires:  python2-eventlet
 BuildRequires:  python2-hacking
 BuildRequires:  python2-fixtures
 BuildRequires:  python2-oslotest
@@ -109,6 +110,7 @@ Summary:    Tests for the Oslo Utility library
 %{?python_provide:%python_provide python2-%{pkg_name}-tests}
 
 Requires: python2-%{pkg_name} = %{version}-%{release}
+Requires: python2-eventlet
 Requires: python2-hacking
 Requires: python2-fixtures
 Requires: python2-oslotest
@@ -131,6 +133,7 @@ Summary:    Tests for the Oslo Utility library
 %{?python_provide:%python_provide python3-%{pkg_name}-tests}
 
 Requires: python3-%{pkg_name} = %{version}-%{release}
+Requires: python3-eventlet
 Requires: python3-hacking
 Requires: python3-fixtures
 Requires: python3-monotonic
@@ -156,6 +159,7 @@ BuildRequires:  python3-pbr
 
 # test requirements
 BuildRequires:  python3-pyparsing
+BuildRequires:  python3-eventlet
 BuildRequires:  python3-hacking
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-monotonic
@@ -273,3 +277,4 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %endif
 
 %changelog
+
