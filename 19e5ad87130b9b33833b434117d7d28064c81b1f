@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ad0253b_5d31bdeb",
+        "filename": "python-oslo-utils.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-01-23T15:51:37Z",
+      "side": 1,
+      "message": "eventlet is optional as runtime [1] and it\u0027s not in requirements.txt. mainly we should only include it as BR.\n\nhttps://github.com/openstack/oslo.utils/blob/eff0629790af2dda13d8566a20ceee21f4a52a7a/oslo_utils/eventletutils.py#L31",
+      "range": {
+        "startLine": 113,
+        "startChar": 10,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "19e5ad87130b9b33833b434117d7d28064c81b1f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
