@@ -136,7 +136,6 @@ Requires: python3-%{pkg_name} = %{version}-%{release}
 Requires: python3-eventlet
 Requires: python3-hacking
 Requires: python3-fixtures
-Requires: python3-monotonic
 Requires: python3-netaddr
 Requires: python3-oslo-i18n
 Requires: python3-oslotest
@@ -162,7 +161,6 @@ BuildRequires:  python3-pyparsing
 BuildRequires:  python3-eventlet
 BuildRequires:  python3-hacking
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-monotonic
 BuildRequires:  python3-netaddr
 BuildRequires:  python3-netifaces
 BuildRequires:  python3-oslo-i18n
@@ -182,7 +180,6 @@ Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-pytz
-Requires:       python3-monotonic
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}
