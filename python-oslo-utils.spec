@@ -8,7 +8,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 Name:           python-oslo-utils
-Version:        3.28.3
+Version:        3.28.4
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
@@ -233,6 +233,9 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %endif
 
 %changelog
+* Thu Apr 18 2019 RDO <dev@lists.rdoproject.org> 3.28.4-1
+- Update to 3.28.4
+
 * Tue Jun 12 2018 RDO <dev@lists.rdoproject.org> 3.28.3-1
 - Update to 3.28.3
 
