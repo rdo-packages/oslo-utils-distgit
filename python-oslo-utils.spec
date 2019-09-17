@@ -18,8 +18,8 @@ The OpenStack Oslo Utility library. \
 %global common_desc_tests Tests for the Oslo Utility library.
 
 Name:           python-oslo-utils
-Version:        XXX
-Release:        XXX
+Version:        3.41.1
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -274,4 +274,7 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_utils/locale
 %endif
 
 %changelog
+* Tue Sep 17 2019 RDO <dev@lists.rdoproject.org> 3.41.1-1
+- Update to 3.41.1
+
 
