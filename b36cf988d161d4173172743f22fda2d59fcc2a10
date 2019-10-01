@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "963971b9_242bfaff",
+        "filename": "python-oslo-utils.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-10-01T16:11:27Z",
+      "side": 1,
+      "message": "python2 only.",
+      "range": {
+        "startLine": 61,
+        "startChar": 31,
+        "endLine": 61,
+        "endChar": 40
+      },
+      "revId": "b36cf988d161d4173172743f22fda2d59fcc2a10",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "330413bf_e6c937ad",
+        "filename": "python-oslo-utils.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2019-10-01T16:11:27Z",
+      "side": 1,
+      "message": "python2 only.",
+      "range": {
+        "startLine": 83,
+        "startChar": 31,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "b36cf988d161d4173172743f22fda2d59fcc2a10",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
