@@ -24,8 +24,8 @@ The OpenStack Oslo Utility library. \
 %global common_desc_tests Tests for the Oslo Utility library.
 
 Name:           python-oslo-utils
-Version:        3.41.1
-Release:        2%{?dist}
+Version:        3.41.2
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -181,6 +181,9 @@ mv %{buildroot}%{pyver_sitelib}/oslo_utils/locale %{buildroot}%{_datadir}/locale
 %license LICENSE
 
 %changelog
+* Tue Nov 05 2019 RDO <dev@lists.rdoproject.org> 3.41.2-1
+- Update to 3.41.2
+
 * Thu Oct 03 2019 Joel Capitao <jcapitao@redhat.com> 3.41.1-2
 - Removed python2 subpackages in no el7 distros
 
