@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 %global pypi_name oslo.utils
 %global pkg_name oslo-utils
 %global with_doc 1
@@ -39,86 +28,72 @@ BuildRequires:  openstack-macros
 %description
 %{common_desc}
 
-%package -n python%{pyver}-%{pkg_name}
+%package -n python3-%{pkg_name}
 Summary:    OpenStack Oslo Utility library
-%{?python_provide:%python_provide python%{pyver}-%{pkg_name}}
+%{?python_provide:%python_provide python3-%{pkg_name}}
 
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-funcsigs
-BuildRequires:  python%{pyver}-pbr
-BuildRequires:  python%{pyver}-iso8601
-BuildRequires:  python%{pyver}-debtcollector
+BuildRequires:  python3-devel
+BuildRequires:  python3-funcsigs
+BuildRequires:  python3-pbr
+BuildRequires:  python3-iso8601
+BuildRequires:  python3-debtcollector
 # test requirements
-BuildRequires:  python%{pyver}-eventlet
-BuildRequires:  python%{pyver}-hacking
-BuildRequires:  python%{pyver}-fixtures
-BuildRequires:  python%{pyver}-oslotest
-BuildRequires:  python%{pyver}-testtools
-BuildRequires:  python%{pyver}-funcsigs
-BuildRequires:  python%{pyver}-ddt
-BuildRequires:  python%{pyver}-oslo-i18n
-BuildRequires:  python%{pyver}-pyparsing
-BuildRequires:  python%{pyver}-testscenarios
-BuildRequires:  python%{pyver}-testrepository
-BuildRequires:  python%{pyver}-netaddr
+BuildRequires:  python3-eventlet
+BuildRequires:  python3-hacking
+BuildRequires:  python3-fixtures
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-testtools
+BuildRequires:  python3-funcsigs
+BuildRequires:  python3-ddt
+BuildRequires:  python3-oslo-i18n
+BuildRequires:  python3-pyparsing
+BuildRequires:  python3-testscenarios
+BuildRequires:  python3-testrepository
+BuildRequires:  python3-netaddr
 # Required to compile translation files
-BuildRequires:  python%{pyver}-babel
-# Handle python2 exception
-%if %{pyver} == 2
-BuildRequires:  python-netifaces
-BuildRequires:  pytz
-BuildRequires:  python%{pyver}-monotonic
-%else
-BuildRequires:  python%{pyver}-netifaces
-BuildRequires:  python%{pyver}-pytz
-%endif
+BuildRequires:  python3-babel
+BuildRequires:  python3-netifaces
+BuildRequires:  python3-pytz
 
-Requires:       python%{pyver}-funcsigs
-Requires:       python%{pyver}-oslo-i18n >= 3.15.3
-Requires:       python%{pyver}-iso8601
-Requires:       python%{pyver}-six >= 1.10.0
-Requires:       python%{pyver}-debtcollector >= 1.2.0
-Requires:       python%{pyver}-pyparsing
-Requires:       python%{pyver}-netaddr >= 0.7.18
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:       pytz
-Requires:       python-netifaces >= 0.10.4
-Requires:       python%{pyver}-monotonic
-%else
-Requires:       python%{pyver}-pytz
-Requires:       python%{pyver}-netifaces >= 0.10.4
-%endif
+Requires:       python3-funcsigs
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-iso8601
+Requires:       python3-six >= 1.10.0
+Requires:       python3-debtcollector >= 1.2.0
+Requires:       python3-pyparsing
+Requires:       python3-netaddr >= 0.7.18
+Requires:       python3-pytz
+Requires:       python3-netifaces >= 0.10.4
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
-%description -n python%{pyver}-%{pkg_name}
+%description -n python3-%{pkg_name}
 %{common_desc}
 
 %if 0%{?with_doc}
 %package -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo Utility library
 
-BuildRequires:  python%{pyver}-sphinx
-BuildRequires:  python%{pyver}-openstackdocstheme
+BuildRequires:  python3-sphinx
+BuildRequires:  python3-openstackdocstheme
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo Utility library.
 %endif
 
-%package -n python%{pyver}-%{pkg_name}-tests
+%package -n python3-%{pkg_name}-tests
 Summary:    Tests for the Oslo Utility library
 
-Requires: python%{pyver}-%{pkg_name} = %{version}-%{release}
-Requires: python%{pyver}-eventlet
-Requires: python%{pyver}-hacking
-Requires: python%{pyver}-fixtures
-Requires: python%{pyver}-oslotest
-Requires: python%{pyver}-testtools
-Requires: python%{pyver}-ddt
-Requires: python%{pyver}-testscenarios
-Requires: python%{pyver}-testrepository
+Requires: python3-%{pkg_name} = %{version}-%{release}
+Requires: python3-eventlet
+Requires: python3-hacking
+Requires: python3-fixtures
+Requires: python3-oslotest
+Requires: python3-testtools
+Requires: python3-ddt
+Requires: python3-testscenarios
+Requires: python3-testrepository
 
-%description -n python%{pyver}-%{pkg_name}-tests
+%description -n python3-%{pkg_name}-tests
 %{common_desc_tests}
 
 %package  -n python-%{pkg_name}-lang
@@ -134,39 +109,39 @@ Translation files for Oslo utils library
 %py_req_cleanup
 
 %build
-%{pyver_build}
+%{py3_build}
 
 %if 0%{?with_doc}
 # generate html docs
-sphinx-build-%{pyver} -W -b html doc/source doc/build/html
-# remove the sphinx-build-%{pyver} leftovers
+sphinx-build-3 -W -b html doc/source doc/build/html
+# remove the sphinx-build-3 leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 # Generate i18n files
-%{pyver_bin} setup.py compile_catalog -d build/lib/oslo_utils/locale
+python3 setup.py compile_catalog -d build/lib/oslo_utils/locale
 
 %install
-%{pyver_install}
+%{py3_install}
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
-rm -f %{buildroot}%{pyver_sitelib}/oslo_utils/locale/*/LC_*/oslo_utils*po
-rm -f %{buildroot}%{pyver_sitelib}/oslo_utils/locale/*pot
-mv %{buildroot}%{pyver_sitelib}/oslo_utils/locale %{buildroot}%{_datadir}/locale
+rm -f %{buildroot}%{python3_sitelib}/oslo_utils/locale/*/LC_*/oslo_utils*po
+rm -f %{buildroot}%{python3_sitelib}/oslo_utils/locale/*pot
+mv %{buildroot}%{python3_sitelib}/oslo_utils/locale %{buildroot}%{_datadir}/locale
 
 # Find language files
 %find_lang oslo_utils --all-name
 
 %check
-%{pyver_bin} setup.py test
+python3 setup.py test
 
-%files -n python%{pyver}-%{pkg_name}
+%files -n python3-%{pkg_name}
 %doc README.rst
 %license LICENSE
-%{pyver_sitelib}/oslo_utils
-%{pyver_sitelib}/*.egg-info
-%exclude %{pyver_sitelib}/oslo_utils/tests
+%{python3_sitelib}/oslo_utils
+%{python3_sitelib}/*.egg-info
+%exclude %{python3_sitelib}/oslo_utils/tests
 
 %if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
@@ -174,8 +149,8 @@ mv %{buildroot}%{pyver_sitelib}/oslo_utils/locale %{buildroot}%{_datadir}/locale
 %license LICENSE
 %endif
 
-%files -n python%{pyver}-%{pkg_name}-tests
-%{pyver_sitelib}/oslo_utils/tests
+%files -n python3-%{pkg_name}-tests
+%{python3_sitelib}/oslo_utils/tests
 
 %files -n python-%{pkg_name}-lang -f oslo_utils.lang
 %license LICENSE
