@@ -24,7 +24,7 @@ The OpenStack Oslo Utility library. \
 %global common_desc_tests Tests for the Oslo Utility library.
 
 Name:           python-oslo-utils
-Version:        3.41.5
+Version:        3.41.6
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
@@ -181,6 +181,9 @@ mv %{buildroot}%{pyver_sitelib}/oslo_utils/locale %{buildroot}%{_datadir}/locale
 %license LICENSE
 
 %changelog
+* Fri Jul 03 2020 RDO <dev@lists.rdoproject.org> 3.41.6-1
+- Update to 3.41.6
+
 * Thu Mar 05 2020 RDO <dev@lists.rdoproject.org> 3.41.5-1
 - Update to 3.41.5
 
