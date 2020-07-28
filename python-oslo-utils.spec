@@ -50,6 +50,7 @@ BuildRequires:  python3-pyparsing
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-netaddr
+BuildRequires:  python3-packaging
 # Required to compile translation files
 BuildRequires:  python3-babel
 BuildRequires:  python3-netifaces
@@ -64,6 +65,7 @@ Requires:       python3-pyparsing
 Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-pytz
 Requires:       python3-netifaces >= 0.10.4
+Requires:       python3-packaging >= 20.4
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}
