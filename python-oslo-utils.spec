@@ -71,7 +71,6 @@ BuildRequires:  python3-pytz
 Requires:       python3-funcsigs
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-iso8601
-Requires:       python3-six >= 1.10.0
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-pyparsing
 Requires:       python3-netaddr >= 0.7.18
@@ -79,6 +78,7 @@ Requires:       python3-pytz
 Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-packaging >= 20.4
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
+Requires:       python3-pbr >= 2.0.0
 
 %description -n python3-%{pkg_name}
 %{common_desc}
