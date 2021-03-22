@@ -45,7 +45,6 @@ Summary:    OpenStack Oslo Utility library
 %{?python_provide:%python_provide python3-%{pkg_name}}
 
 BuildRequires:  python3-devel
-BuildRequires:  python3-funcsigs
 BuildRequires:  python3-pbr
 BuildRequires:  python3-iso8601
 BuildRequires:  python3-debtcollector
@@ -55,7 +54,6 @@ BuildRequires:  python3-hacking
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-testtools
-BuildRequires:  python3-funcsigs
 BuildRequires:  python3-ddt
 BuildRequires:  python3-oslo-i18n
 BuildRequires:  python3-pyparsing
@@ -63,12 +61,12 @@ BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-netaddr
 BuildRequires:  python3-packaging
+BuildRequires:  python3-yaml
 # Required to compile translation files
 BuildRequires:  python3-babel
 BuildRequires:  python3-netifaces
 BuildRequires:  python3-pytz
 
-Requires:       python3-funcsigs
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-iso8601
 Requires:       python3-debtcollector >= 1.2.0
