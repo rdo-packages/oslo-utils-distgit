@@ -175,3 +175,4 @@ python3 setup.py test
 * Tue Sep 07 2021 RDO <dev@lists.rdoproject.org> 4.10.0-1
 - Update to 4.10.0
 
+# REMOVEME: error caused by commit https://opendev.org/openstack/oslo.utils/commit/2c74bb92e5e9561e2ad1386c2e14fb042d6dc062
