@@ -67,6 +67,23 @@
       "message": "recheck",
       "revId": "98a6867199e70f76dd511be939047883337395a6",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f3226d_8c6ad7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2022-01-20T10:55:04Z",
+      "side": 1,
+      "message": "AFS mirror is broken, see\n",
+      "revId": "98a6867199e70f76dd511be939047883337395a6",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
