@@ -84,6 +84,24 @@
       "message": "AFS mirror is broken, see\n",
       "revId": "98a6867199e70f76dd511be939047883337395a6",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eecc0dbf_a1f69072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2022-01-20T10:55:26Z",
+      "side": 1,
+      "message": "https://review.opendev.org/c/opendev/system-config/+/825446",
+      "parentUuid": "51f3226d_8c6ad7d7",
+      "revId": "98a6867199e70f76dd511be939047883337395a6",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
