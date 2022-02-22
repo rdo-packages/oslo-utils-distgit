@@ -16,7 +16,7 @@ The OpenStack Oslo Utility library. \
 
 Name:           python-oslo-utils
 Version:        4.10.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -129,6 +129,8 @@ Translation files for Oslo utils library
 
 %if 0%{?with_doc}
 # generate html docs
+# Disable setting up dns (we have no /etc/resolv.conf in mock
+export EVENTLET_NO_GREENDNS=yes
 sphinx-build-3 -W -b html doc/source doc/build/html
 # remove the sphinx-build-3 leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
@@ -172,6 +174,9 @@ python3 setup.py test
 %license LICENSE
 
 %changelog
+* Tue Feb 22 2022 Jose Castro Leon <jose.castro.leon@cern.ch> 4.10.1-2
+- Disable setting up dns (we have no /etc/resolv.conf in mock
+
 * Wed Jan 19 2022 RDO <dev@lists.rdoproject.org> 4.10.1-1
 - Update to 4.10.1
 
