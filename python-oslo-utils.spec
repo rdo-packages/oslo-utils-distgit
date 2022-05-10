@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x01527a34f0d0080f8a5db8d6eb6c5df21b4b6363
+%global sources_gpg_sign 0xa63ea142678138d1bb15f2e303bdfd64dd164087
 %global pypi_name oslo.utils
 %global pkg_name oslo-utils
 %global with_doc 1
@@ -15,7 +15,7 @@ The OpenStack Oslo Utility library. \
 %global common_desc_tests Tests for the Oslo Utility library.
 
 Name:           python-oslo-utils
-Version:        4.12.2
+Version:        4.12.3
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
@@ -172,6 +172,9 @@ python3 setup.py test
 %license LICENSE
 
 %changelog
+* Tue May 10 2022 RDO <dev@lists.rdoproject.org> 4.12.3-1
+- Update to 4.12.3
+
 * Thu Mar 10 2022 RDO <dev@lists.rdoproject.org> 4.12.2-1
 - Update to 4.12.2
 
