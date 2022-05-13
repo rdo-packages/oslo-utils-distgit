@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x01527a34f0d0080f8a5db8d6eb6c5df21b4b6363
+%global sources_gpg_sign 0xa63ea142678138d1bb15f2e303bdfd64dd164087
 %global pypi_name oslo.utils
 %global pkg_name oslo-utils
 %global with_doc 1
@@ -15,8 +15,8 @@ The OpenStack Oslo Utility library. \
 %global common_desc_tests Tests for the Oslo Utility library.
 
 Name:           python-oslo-utils
-Version:        4.10.1
-Release:        2%{?dist}
+Version:        4.10.2
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -174,6 +174,9 @@ python3 setup.py test
 %license LICENSE
 
 %changelog
+* Fri May 13 2022 RDO <dev@lists.rdoproject.org> 4.10.2-1
+- Update to 4.10.2
+
 * Tue Feb 22 2022 Jose Castro Leon <jose.castro.leon@cern.ch> 4.10.1-2
 - Disable setting up dns (we have no /etc/resolv.conf in mock
 
