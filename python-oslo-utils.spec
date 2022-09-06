@@ -76,7 +76,6 @@ Requires:       python3-pytz
 Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-packaging >= 20.4
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
-Requires:       python3-pbr >= 2.0.0
 
 %description -n python3-%{pkg_name}
 %{common_desc}
