@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
+%global sources_gpg_sign 0xa63ea142678138d1bb15f2e303bdfd64dd164087
 %global pypi_name oslo.utils
 %global pkg_name oslo-utils
 %global with_doc 1
@@ -15,8 +15,8 @@ The OpenStack Oslo Utility library. \
 %global common_desc_tests Tests for the Oslo Utility library.
 
 Name:           python-oslo-utils
-Version:        XXX
-Release:        XXX
+Version:        6.0.1
+Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
 License:        ASL 2.0
@@ -171,3 +171,6 @@ python3 setup.py test
 %license LICENSE
 
 %changelog
+* Fri Sep 09 2022 RDO <dev@lists.rdoproject.org> 6.0.1-1
+- Update to 6.0.1
+
