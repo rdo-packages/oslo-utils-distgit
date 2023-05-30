@@ -58,7 +58,6 @@ BuildRequires:  python3-ddt
 BuildRequires:  python3-oslo-i18n
 BuildRequires:  python3-pyparsing
 BuildRequires:  python3-testscenarios
-BuildRequires:  python3-testrepository
 BuildRequires:  python3-netaddr
 BuildRequires:  python3-packaging
 BuildRequires:  python3-yaml
@@ -102,7 +101,6 @@ Requires: python3-oslotest
 Requires: python3-testtools
 Requires: python3-ddt
 Requires: python3-testscenarios
-Requires: python3-testrepository
 
 %description -n python3-%{pkg_name}-tests
 %{common_desc_tests}
