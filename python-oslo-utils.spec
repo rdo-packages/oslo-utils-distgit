@@ -167,3 +167,4 @@ mv %{buildroot}%{python3_sitelib}/oslo_utils/locale %{buildroot}%{_datadir}/loca
 %license LICENSE
 
 %changelog
+
