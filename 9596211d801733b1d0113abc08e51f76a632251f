@@ -16,6 +16,23 @@
       "message": "yep we now need qemu-img for the format inspector code.",
       "revId": "9596211d801733b1d0113abc08e51f76a632251f",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0b05eb_f955be40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 600
+      },
+      "writtenOn": "2024-08-27T20:18:31Z",
+      "side": 1,
+      "message": "so the  rpmlint failures are relevnent\n\npython3-oslo-utils.noarch: W: obsolete-not-provided python39-oslo-utils\npython3-oslo-utils-tests.noarch: W: obsolete-not-provided python39-oslo-utils-tests\npython-oslo-utils-doc.noarch: W: file-not-utf8 /usr/share/doc/python-oslo-utils-doc/html/objects.inv\npython-oslo-utils-doc.noarch: W: wrong-file-end-of-line-encoding /usr/share/doc/python-oslo-utils-doc/html/objects.inv\n4 packages and 0 specfiles checked; 0 errors, 2 warnings.\npython3-oslo-utils.noarch: W: obsolete-not-provided python39-oslo-utils\npython3-oslo-utils-tests.noarch: W: obsolete-not-provided python39-oslo-utils-tests",
+      "revId": "9596211d801733b1d0113abc08e51f76a632251f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
