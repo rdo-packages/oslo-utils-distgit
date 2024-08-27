@@ -53,6 +53,7 @@ BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
 
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
+Requires:       qemu-img >= 2.10.0
 
 %description -n python3-%{pkg_name}
 %{common_desc}
