@@ -51,6 +51,7 @@ Summary:    OpenStack Oslo Utility library
 
 BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
+BuildRequires:  qemu-img
 
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
@@ -124,7 +125,7 @@ done
 # generate html docs
 %tox -e docs
 # remove the sphinx-build-3 leftovers
-rm -rf doc/build/html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo} doc/build/html/objects.inv
 %endif
 
 
