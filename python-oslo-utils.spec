@@ -11,6 +11,10 @@
 %if ! 0%{?with_doc}
 %global excluded_brs %{excluded_brs} sphinx openstackdocstheme
 %endif
+# Exclude some BRs for Fedora
+%if 0%{?fedora}
+%global excluded_brs %{excluded_brs} eventlet
+%endif
 
 %global common_desc \
 The OpenStack Oslo Utility library. \
@@ -70,7 +74,9 @@ Documentation for the Oslo Utility library.
 Summary:    Tests for the Oslo Utility library
 
 Requires: python3-%{pkg_name} = %{version}-%{release}
+%if ! 0%{?fedora}
 Requires: python3-eventlet
+%endif
 Requires: python3-hacking
 Requires: python3-fixtures
 Requires: python3-oslotest
@@ -146,6 +152,10 @@ mv %{buildroot}%{python3_sitelib}/oslo_utils/locale %{buildroot}%{_datadir}/loca
 %find_lang oslo_utils --all-name
 
 %check
+%if 0%{?fedora}
+# eventlet is not yet supported on python 3.13 and it's not used in openstack clients
+rm oslo_utils/tests/test_eventletutils.py
+%endif
 %tox -e %{default_toxenv}
 
 %files -n python3-%{pkg_name}
