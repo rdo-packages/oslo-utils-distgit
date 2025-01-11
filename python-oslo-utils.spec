@@ -105,8 +105,7 @@ sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
 sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
 sed -i /^minversion.*/d tox.ini
 sed -i /^requires.*virtualenv.*/d tox.ini
-# we consume pytz from AppStream repo instead of tzdata
-sed -i 's/tzdata.*/pytz/' requirements.txt
+sed -i '/tzdata.*/d' requirements.txt
 
 # Exclude some bad-known BRs
 for pkg in %{excluded_brs};do
