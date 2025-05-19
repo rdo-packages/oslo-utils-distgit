@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0xf8675126e2411e7748dd46662fc2093e4682645f
+%global sources_gpg_sign 0x22284f69d9eccdf3df7819791c711af193ff8e54
 %global pypi_name oslo.utils
 %global pkg_name oslo-utils
 %global with_doc 1
@@ -21,7 +21,7 @@ The OpenStack Oslo Utility library. \
 %global common_desc_tests Tests for the Oslo Utility library.
 
 Name:           python-oslo-utils
-Version:        7.3.0
+Version:        7.3.1
 Release:        1%{?dist}
 Summary:        OpenStack Oslo Utility library
 
@@ -168,6 +168,9 @@ mv %{buildroot}%{python3_sitelib}/oslo_utils/locale %{buildroot}%{_datadir}/loca
 %license LICENSE
 
 %changelog
+* Mon May 19 2025 RDO <dev@lists.rdoproject.org> 7.3.1-1
+- Update to 7.3.1
+
 * Wed Sep 18 2024 RDO <dev@lists.rdoproject.org> 7.3.0-1
 - Update to 7.3.0
 
